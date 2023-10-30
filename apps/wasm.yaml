@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-wasm
+  labels:
+    app: wasm
+spec:
+  runtimeClassName: wasm
+  containers:
+  - name: wasm
+    image: ghcr.io/containerd/runwasi/wasi-demo-app:v0.0.1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-wasm-service
+spec:
+  selector:
+    app: wasm
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 10086
+    targetPort: 10086
+    nodePort: 32132
