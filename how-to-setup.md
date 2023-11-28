@@ -176,8 +176,8 @@ tmux new-session -d -s containerd 'ENABLE_CRI_SANDBOXES=1 containerd'
 
 ```bash
 # clone repository
-git clone https://github.com/WasmFunction/k3s-k8s.git
-cd k3s-k8s
+git clone https://github.com/WasmFunction/k3s.git
+cd k3s
 
 # config
 mkdir -p build/data && make download && make generate
@@ -191,7 +191,7 @@ cp ./dist/artifacts/k3s /usr/local/bin/
 
 **运行**
 
-使用`kubernetes/K8s-files`目录下的`k3s_install.sh`来初始化k3s service。
+使用**当前文件目录**下的`k3s_install.sh`来初始化k3s service。
 
 **主节点**
 
@@ -252,5 +252,4 @@ kc -f apps/wasm.yaml
 # test service
 curl -X POST -H "Content-Type: application/json" -d '{"args":["White", "Hank"]}' localhost:32132
 ```
-
 
